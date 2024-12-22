@@ -1,0 +1,65 @@
+# Python Bytecode Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+venv/
+env/
+.venv/
+ENV/
+*.env
+
+# Distribution / Packaging
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+sdist/
+wheels/
+
+# IDE and Editor folders
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# Test, Coverage, and Logs
+*.log
+*.pot
+*.pyc
+coverage/
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
+.pytest_cache/
+tox.ini
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb
+
+# Dependency directories
+Pipfile.lock
+poetry.lock
+
+# Environment Variables
+.env
+.env.* 
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
