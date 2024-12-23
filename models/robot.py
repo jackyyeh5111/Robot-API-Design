@@ -15,7 +15,7 @@ class Visualizer:
 
         # draw obstacles
         for pt in self.grid.obstacles:
-            self.vis_grid[pt.y][pt.x] = 'X'
+            self.canvas[pt.y][pt.x] = 'X'
 
     def update(self, robot_pos: Point, delay: float = 1.):
         # Clear the console
@@ -42,6 +42,8 @@ class Robot:
             return False
 
         path = path_planner.plan(self.cur_pt, end_pt, self.grid)
+        if len(path) == 0:
+            return False
 
         if self.is_vis:
             self.visualizer.update(self.cur_pt)

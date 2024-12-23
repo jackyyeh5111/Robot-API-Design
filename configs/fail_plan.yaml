@@ -6,7 +6,9 @@ grid:
   width: 3
   height: 3
   obstacles: [
-    [0, 1]
+    [0, 1],
+    [1, 1],
+    [2, 1]
   ]
 
 planner_name: "dijkstra"

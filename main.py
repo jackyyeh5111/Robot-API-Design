@@ -34,12 +34,17 @@ def main():
     grid = Grid(width, height)
     robot = Robot(start_pt, grid, args.is_vis)
 
+    for obstacle in config["grid"]["obstacles"]:
+        grid.add_obstacle(obstacle[0], obstacle[1])
+
     # create planner
     planner = PathPlannerFactory.get_planner(config["planner_name"])
     print(f"Using planner: {planner.__class__.__name__}")
 
     # navigate
-    robot.navigate(end_pt, planner)
+    nav_success = robot.navigate(end_pt, planner)
+    if not nav_success:
+        print(f"\nRobot cannot find a valid path from {start_pt} to {end_pt}")
 
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@ class Grid:
 
     def add_obstacle(self, x: int, y: int) -> bool:
         pt = Point(x, y)
-        if not self.isValidPoint(pt):
+        if not self.is_valid_point(pt):
             return False
         self.obstacles.append(pt)
         return True
