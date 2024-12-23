@@ -36,18 +36,26 @@ class Visualizer:
 
 
 class Robot:
-    def __init__(self, cur_pt: Point, grid: Grid, is_vis: bool):
+    def __init__(self, cur_pt: Point, grid: Grid, path_planner: PathPlanner, is_vis: bool):
         self.cur_pt = cur_pt
         self.grid = grid
         self.is_vis = is_vis
+        self.path_planner = path_planner
         if self.is_vis:
             self.visualizer = Visualizer(self.grid)
 
-    def navigate(self, end_pt: Point, path_planner: PathPlanner) -> bool:
+    def set_grid(self, new_grid: Grid):
+        self.grid = new_grid
+
+    def set_path_planner(self, path_planner: PathPlanner):
+        """ allow switching path planner in runtime """
+        self.path_planner = path_planner
+
+    def navigate(self, end_pt: Point) -> bool:
         if not self.grid.is_valid_point(end_pt):
             return False
 
-        path = path_planner.plan(self.cur_pt, end_pt, self.grid)
+        path = self.path_planner.plan(self.cur_pt, end_pt, self.grid)
         if len(path) == 0:
             return False
 

@@ -30,19 +30,29 @@ def main():
     width = config["grid"]["width"]
     height = config["grid"]["height"]
 
-    # init primary components
-    grid = Grid(width, height)
-    robot = Robot(start_pt, grid, args.is_vis)
-
-    for obstacle in config["grid"]["obstacles"]:
-        grid.add_obstacle(obstacle[0], obstacle[1])
-
     # create planner
     planner = PathPlannerFactory.get_planner(config["planner_name"])
     print(f"Using planner: {planner.__class__.__name__}")
 
-    # navigate
-    nav_success = robot.navigate(end_pt, planner)
+    # init primary components
+    grid = Grid(width, height)
+    robot = Robot(start_pt, grid, planner, args.is_vis)
+
+    for obstacle in config["grid"]["obstacles"]:
+        grid.add_obstacle(obstacle[0], obstacle[1])
+
+    # first navigate
+    nav_success = robot.navigate(end_pt)
+    if not nav_success:
+        print(f"\nRobot cannot find a valid path from {start_pt} to {end_pt}")
+
+    # switch path planner
+    new_planner = PathPlannerFactory.get_planner("bfs")
+    print(f"Using planner: {planner.__class__.__name__}")
+    robot.set_path_planner(new_planner)
+
+    # second navigate
+    nav_success = robot.navigate(end_pt=Point(8, 8))
     if not nav_success:
         print(f"\nRobot cannot find a valid path from {start_pt} to {end_pt}")
 
