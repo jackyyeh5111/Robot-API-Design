@@ -7,10 +7,9 @@ def main():
     height = 3
     grid = Grid(width, height)
     robot = Robot(start_pt, grid)
-
+    
     planner = Dijkstra()
-    path = planner.plan(start_pt, end_pt, grid)
-    print ('path:', path)
-
+    robot.navigate(end_pt, planner)
+    
 if __name__ == '__main__':
     main()

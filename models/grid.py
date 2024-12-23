@@ -26,8 +26,3 @@ class Grid:
             return False
         self.obstacles.append(pt)
         return True
-
-    def path_planning(self, start: Point, end: Point) -> List[Point]:
-        # Placeholder path planning logic
-        # Returns a straight-line path for simplicity
-        return [start, end]
