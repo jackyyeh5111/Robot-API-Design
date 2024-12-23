@@ -6,15 +6,14 @@ Robot navigate from start to end in the grid, avoid all obstacles along the way.
 ## Design Highlights
 To ensure a modular and extensible architecture, the following designs have been implemented:
 1. Strategy pattern <br>
-Allows users to switch the robot's path-planning algorithm dynamically at runtime.
+Allows users to switch the robot's path-planning strategy dynamically at runtime.
 2. Factory pattern <br>
 Encapsulates the `PathPalnner` object creation process by providing an interface to create objects without specifying their concrete classes. This delegation promotes loose coupling and enhances code reuse and extensibility.
 3. YAML Configuration <br>
 Allow users to modify parameters without altering the codebase.
 
 ## UML
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/bfc31fe8-704b-4adf-b2eb-42c161808a64" />
-
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/90ca6f91-6c0f-4899-8ebb-553f2391f5e5" />
 
 ## Folder Structure
 ```
@@ -69,6 +68,9 @@ planner_name: "dijkstra" # support "dijkstra" or "bfs"
 ### Usage
 ```
 $ python3 main.py [-c CONFIG_PATH]
+
+ex: 
+python3 main.py -c configs/default.yaml
 ```
 
 Example output (using `default.yaml`):
