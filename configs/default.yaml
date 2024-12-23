@@ -1,0 +1,12 @@
+robot:
+  start_pt: [0, 0]
+  end_pt: [2, 2]
+
+grid:
+  width: 3
+  height: 3
+  # obstales: [
+  #   [0, 1]
+  # ]
+
+planner_name: "dijkstra"
