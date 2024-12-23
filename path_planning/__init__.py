@@ -1,3 +1,3 @@
-from .path_planner import PathPlanner
-from .path_planner_factory import PathPlannerFactory
+from .path_planner import PathPlanner, PathPlannerFactory
 from .dijkstra import Dijkstra
+from .bfs import BFS
