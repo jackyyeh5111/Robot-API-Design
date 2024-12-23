@@ -6,8 +6,7 @@ import heapq  # For priority queue implementation
 
 
 class Dijkstra(PathPlanner):
-    @staticmethod
-    def plan(start: Point, end: Point, grid: Grid) -> List[Point]:
+    def plan(self, start: Point, end: Point, grid: Grid) -> List[Point]:
         # Convert obstacles to a set for fast lookup
         obstacle_set = set(obstacle for obstacle in grid.obstacles)
 
