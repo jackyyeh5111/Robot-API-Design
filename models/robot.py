@@ -5,6 +5,7 @@ from path_planning import PathPlanner
 import os
 import time
 
+
 class Visualizer:
     def __init__(self, grid: Grid):
         self.grid = grid
@@ -13,9 +14,13 @@ class Visualizer:
         self.canvas = [['-' for _ in range(self.grid.width)]
                        for _ in range(self.grid.height)]
 
-        # draw obstacles
+        # draw obstacles and target
+        self.canvas[self.target.y][self.target.x] = 'T'
         for pt in self.grid.obstacles:
             self.canvas[pt.y][pt.x] = 'X'
+
+    def set_target(self, target: Point):
+        self.target = target
 
     def update(self, robot_pos: Point, delay: float = 1.):
         # Clear the console
@@ -28,7 +33,8 @@ class Visualizer:
         # Display the grid
         for row in self.canvas:
             print(' '.join(row))
-        
+
+
 class Robot:
     def __init__(self, cur_pt: Point, grid: Grid, is_vis: bool):
         self.cur_pt = cur_pt
@@ -46,23 +52,24 @@ class Robot:
             return False
 
         if self.is_vis:
+            self.visualizer.set_target(end_pt)
             self.visualizer.update(self.cur_pt)
-                
+
         # Control the robot's movement
         for next_pt in path:
             if self.cur_pt == next_pt:
                 continue
             direction = next_pt - self.cur_pt
-                
+
             if self.is_vis:
                 self.visualizer.update(self.cur_pt + direction)
-                
+
             self.move(direction)
-            
+
             # keep display frame for 1 sec
             if self.is_vis:
                 time.sleep(1.0)
-            
+
         return True
 
     def move(self, direction: Point):
