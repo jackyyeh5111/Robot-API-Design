@@ -1,0 +1,13 @@
+robot:
+  start_pt: [0, 0]
+  end_pt: [5, 5]
+
+grid:
+  width: 10
+  height: 10
+  obstacles: [
+    [0, 1],
+    [2, 0]
+  ]
+
+planner_name: "bfs"

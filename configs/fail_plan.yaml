@@ -2,6 +2,7 @@ robot:
   start_pt: [0, 0]
   end_pt: [2, 2]
 
+# obstacles block all possible ways from start to end
 grid:
   width: 3
   height: 3
