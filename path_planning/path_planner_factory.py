@@ -1,7 +1,7 @@
 from .path_planner import PathPlanner
 from .dijkstra import Dijkstra
+from path_planning.bfs import BFS
 # from path_planning.astar import AStar
-# from path_planning.bfs import BFS
 
 
 class PathPlannerFactory:
@@ -16,8 +16,8 @@ class PathPlannerFactory:
         """
         planners = {
             "dijkstra": Dijkstra,
+            "bfs": BFS,
             # "astar": AStar,
-            # "bfs": BFS
         }
 
         if planner_type.lower() in planners:
